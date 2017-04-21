@@ -57,6 +57,8 @@ if [ -z "$VIRTUAL_ENV" ]; then
     exit 1
 fi
 
+export PYTHONHOME=$VIRTUAL_ENV
+
 _info "installing deps into virtualenv"
 _debug "running: pip install -r requirements.txt"
 pip install -r ${__proj_dir}/requirements.txt
@@ -89,3 +91,5 @@ _info "running: rm -rf ${__proj_dir}/acbuild-${acbuild_ver}"
 rm -rf ${__proj_dir}/dist/acbuild-${acbuild_ver}
 
 _info "done"
+
+unset PYTHONHOME
